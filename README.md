@@ -32,8 +32,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [GitHub Repository](https://github.com/devbyroman/sunnyside-agency-landing-page)
-- Live Site URL: [Live Demo](https://devbyroman.github.io/sunnyside-agency-landing-page)
+- Solution URL: [GitHub Repository](https://github.com/devbyroman/Agency-landing-page/tree/main)
+- Live Site URL: [Live Demo](https://agency-landing-page-sigma-ten.vercel.app/)
 
 ## My process
 
