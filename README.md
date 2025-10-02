@@ -146,7 +146,6 @@ If using SCSS, compile with:
 sass styles/main.scss styles/main.css --watch
 Open index.html in your browser or use a local server:
 
-npx serve
 Features
 ✅ Fully responsive design (375px - 1440px)
 ✅ Mobile menu with smooth animations
