@@ -12,11 +12,7 @@ This is a solution to the [Sunnyside agency landing page challenge on Frontend M
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
   - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
-
-**Note: Delete this note and update the table of contents based on what sections you keep.**
 
 ## Overview
 
@@ -26,40 +22,136 @@ Users should be able to:
 
 - View the optimal layout for the site depending on their device's screen size
 - See hover states for all interactive elements on the page
+- Navigate through the mobile menu
 
 ### Screenshot
 
-![](./screenshot.jpg)
-
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it.
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+![Desktop Design](./design/desktop-design.jpg)
+![Mobile Design](./design/mobile-design.jpg)
+![Mobile Menu](./design/mobile-menu.jpg)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [GitHub Repository](https://github.com/devbyroman/sunnyside-agency-landing-page)
+- Live Site URL: [Live Demo](https://devbyroman.github.io/sunnyside-agency-landing-page)
 
 ## My process
 
 ### Built with
 
 - Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
+- SCSS/Sass with 7-1 architecture pattern
 - CSS Grid
+- Flexbox
 - Mobile-first workflow
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+- Vanilla JavaScript
+- Responsive images with `<picture>` element
+- Custom CSS properties
+- Google Fonts (Barlow & Fraunces)
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+This project was an excellent opportunity to practice **modern CSS Grid layouts** and **SCSS modular architecture**. I implemented a clean 7-1 pattern separating styles into:
 
-## Author
+- `abstracts/` - variables, mixins, and functions
+- `base/` - reset and typography styles
+- `components/` - navigation, buttons, overlays
+- `layout/` - grid systems, hero, features, services, testimonials, gallery, footer
 
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/devbyroman)
+**Key learnings:**
+
+#### 1. SCSS Architecture & Mixins
+
+Created reusable mixins for responsive breakpoints:
+```scss
+@mixin mobile {
+@media (max-width: $breakpoint-mobile) {
+@content;
+}
+}
+
+@mixin desktop {
+@media (min-width: $breakpoint-desktop) {
+@content;
+}
+}
+```
+
+#### 2. Responsive Images with Picture Element
+
+Implemented adaptive images for optimal performance:
+
+<picture> <source media="(min-width: 1025px)" srcset="images/desktop/image-transform.jpg"> <img src="images/mobile/image-transform.jpg" alt="Transform"> </picture> 
+This approach:
+
+Loads mobile-optimized images on smaller screens
+
+Serves desktop images only when needed
+
+Improves page load performance
+
+Reduces bandwidth usage on mobile devices
+
+3. CSS Grid for Complex Layouts
+Used CSS Grid for the main layout structure:
+
+```scss
+.feature {
+  display: grid;
+  @include desktop {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+4. Mobile Menu Implementation
+Built a smooth sliding mobile menu with overlay:
+
+```js
+menuToggle.addEventListener('click', () => {
+  navList.classList.toggle('active');
+  overlay.classList.toggle('active');
+});
+```
+5. Custom Link Underlines
+Created animated underline effects for feature links:
+
+```scss
+.feature-link {
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -0.25rem;
+    background: $yellow-500;
+    transition: opacity 0.2s;
+  }
+  &:hover::after {
+    opacity: 1;
+  }
+}
+```
+Author
+
+Frontend Mentor - @devbyroman
+
+GitHub - @devbyroman
+
+Installation & Setup
+Clone the repository:
+
+git clone https://github.com/devbyroman/sunnyside-agency-landing-page.git
+Navigate to the project directory:
+
+cd sunnyside-agency-landing-page
+If using SCSS, compile with:
+
+sass styles/main.scss styles/main.css --watch
+Open index.html in your browser or use a local server:
+
+npx serve
+Features
+✅ Fully responsive design (375px - 1440px)
+✅ Mobile menu with smooth animations
+✅ Hover states on all interactive elements
+✅ Optimized images for different screen sizes
+✅ Semantic HTML5 structure
+✅ Clean SCSS architecture
+✅ Cross-browser compatible
